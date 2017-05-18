@@ -1,0 +1,60 @@
+﻿@model telNet.Models.usluga
+
+@{
+    ViewBag.Title = "Detaljno";
+}
+
+<div class="container">
+    <h2>Details</h2>
+
+    <div>
+        <h4>usluga</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.katalog.nazivKataloga)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.katalog.nazivKataloga)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.nazivUsluge)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.nazivUsluge)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.tipUsluge)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.tipUsluge)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.cijenaUsluge)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.cijenaUsluge)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.opis)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.opis)
+            </dd>
+
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Izmijeni", "Edit", new { id = Model.uslugaID }) |
+        @Html.ActionLink("Vrati se nazad", "Index")
+    </p>
+    </div>

@@ -1,0 +1,51 @@
+﻿@model IEnumerable<telNet.Models.proizvod>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.tipProizvoda.nazivTipa)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.kvalitetaProizvoda)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.cijenaProizvoda)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.opisProizvoda)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.tipProizvoda.nazivTipa)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.kvalitetaProizvoda)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.cijenaProizvoda)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.opisProizvoda)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.proizvodID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.proizvodID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.proizvodID })
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,67 @@
+﻿@model IEnumerable<telNet.Models.usluga>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+
+<div class="container">
+
+    <h2>U S L U G E</h2>
+@if (ViewContext.HttpContext.User.IsInRole("Admin"))
+{
+    <p>
+        @Html.ActionLink("Kreiraj novu uslugu", "Create")
+    </p>
+}
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.katalog.nazivKataloga)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.nazivUsluge)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.tipUsluge)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.cijenaUsluge)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.opis)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.katalog.nazivKataloga)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.nazivUsluge)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.tipUsluge)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.cijenaUsluge)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.opis)
+                </td>
+@if (ViewContext.HttpContext.User.IsInRole("Admin"))
+{
+                <td>
+                    @Html.ActionLink("Izmijeni", "Edit", new { id = item.uslugaID }) |
+                    @Html.ActionLink("Detaljno", "Details", new { id = item.uslugaID }) |
+                    @Html.ActionLink("Izbriši", "Delete", new { id = item.uslugaID })
+                </td>
+}
+            </tr>
+        }
+
+    </table>
+    </div>

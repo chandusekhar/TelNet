@@ -1,0 +1,50 @@
+﻿@model telNet.Models.rating
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>rating</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.rate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.rate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.overview)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.overview)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.datumRatinga)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.datumRatinga)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.datumIstekaRatinga)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.datumIstekaRatinga)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ratingID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
