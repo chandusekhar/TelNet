@@ -4,61 +4,65 @@
     ViewBag.Title = "Paketi";
 }
 
-<h2>Index</h2>
-
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
+<div class="services">
+    <div class="container">
       
-        <th>
-           Naziv Paketa
-        </th>
-        <th>
-            Cijena Paketa
-        </th>
-        <th>
-           Opis
-        </th>
-        <th>
-            Usluge
-        </th>
-        <th></th>
-    </tr>
+            <h2>Paketi usluga</h2>
 
-@foreach (var item in Model.Paketi)
-{
-    string selectedRow = "";
-    if (item.paketID == ViewBag.paketID)
-    {
-        selectedRow = "success";
-    }
-    <tr class="@selectedRow">
+            <p>
+                @Html.ActionLink("Kreiraj novi paket", "Create")
+            </p>
+            <table class="table">
+                <tr>
 
-         <td>
-            @Html.DisplayFor(modelItem => item.nazivPaketa)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.cijenaPaketa)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.opis)
-        </td>
-        <td>
-            @{
-                foreach (var usluga in item.Usluge)
+                    <th>
+                        Naziv Paketa
+                    </th>
+                    <th>
+                        Cijena Paketa
+                    </th>
+                    <th>
+                        Opis
+                    </th>
+                    <th>
+                        Usluge
+                    </th>
+                    <th></th>
+                </tr>
+
+                @foreach (var item in Model.Paketi)
                 {
-                    @usluga.uslugaID @:  @usluga.nazivUsluge <br />
-        }
-            }
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id = item.paketID }) |
-            @Html.ActionLink("Details", "Details", new { id = item.paketID }) |
-            @Html.ActionLink("Delete", "Delete", new { id = item.paketID })
-        </td>
-    </tr>
-}
+                    string selectedRow = "";
+                    if (item.paketID == ViewBag.paketID)
+                    {
+                        selectedRow = "success";
+                    }
+                    <tr class="@selectedRow">
 
-</table>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.nazivPaketa)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.cijenaPaketa)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.opis)
+                        </td>
+                        <td>
+                            @{
+                                foreach (var usluga in item.Usluge)
+                                {
+                                    @:  @usluga.nazivUsluge <br />
+        }
+                            }
+                        </td>
+                        <td>
+                            @Html.ActionLink("Izmjena", "Edit", new { id = item.paketID }) |
+                            @Html.ActionLink("Brisanje", "Delete", new { id = item.paketID })
+                        </td>
+                    </tr>
+                                }
+
+            </table>
+            </div>
+</div>

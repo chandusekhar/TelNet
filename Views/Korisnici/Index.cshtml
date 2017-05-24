@@ -4,32 +4,39 @@
 
 
 
-@if (ViewBag.displayMenu == "Yes")
-{
-    <h1>Panel za administratore</h1>
+    <div class="services">
+        <div class="container">
+            <div class="text-center">
 
+                @if (ViewBag.displayMenu == "Yes")
+                {
 
-    <div class="container">
-        <h3>
-            <li>@Html.ActionLink("Upravljanje dobavljačima", "Index", "dobavljaci")</li>
-        </h3>
-        <h3>
-            <li>@Html.ActionLink("Upravljanje uslugama", "Index", "usluge")</li>
-        </h3>
-        <h3>
-            <li>@Html.ActionLink("Upravljanje paketima usluga", "Index", "paketi")</li>
-        </h3>
-        <h3>
-            <li>@Html.ActionLink("Upravljanje proizvodima", "Index", "proizvodi")</li>
-        </h3>
-        <h3>
-            <li>@Html.ActionLink("Upravljanje tipovima proizvoda", "Index", "tipProizvoda")</li>
-        </h3>
-      
+                    <h2>Panel za administratore</h2>
+
+                    <h3>
+                        <li>@Html.ActionLink("Upravljanje dobavljačima", "Index", "dobavljaci")</li>
+                    </h3>
+                    <h3>
+                        <li>@Html.ActionLink("Upravljanje uslugama", "Index", "usluge")</li>
+                    </h3>
+                    <h3>
+                        <li>@Html.ActionLink("Upravljanje paketima usluga", "Index", "paketi")</li>
+                    </h3>
+                    <h3>
+                        <li>@Html.ActionLink("Upravljanje proizvodima", "Index", "proizvodi")</li>
+                    </h3>
+                    <h3>
+                        <li>@Html.ActionLink("Upravljanje tipovima proizvoda", "Index", "tipProizvoda")</li>
+                    </h3>
+
+                   }
+
+                else
+                {
+                    <h2>  Dobrodosao/la <strong>@ViewBag.Name</strong> :) . </h2>
+
+                }
+
+            </div>
+            </div>
         </div>
-        }
-        else
-        {
-        <h2>  Dobrodosao/la <strong>@ViewBag.Name</strong> :) . </h2>
-
-        }

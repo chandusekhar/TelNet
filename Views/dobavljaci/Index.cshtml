@@ -4,65 +4,68 @@
     ViewBag.Title = "Index";
 }
 
-<div class="container">
+<div class="services">
+    <div class="container">
 
-    <h2>Upravljanje dobavljacima</h2>
+        <h2>Upravljanje dobavljačima</h2>
 
-    <p>
-        @Html.ActionLink("Dodaj novog", "Create")
-    </p>
-    <table class="table">
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.naziv)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.adresa)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ratingKvalitet)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ratingBrzinaIsporuke)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ratingKomunikacija)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ratingUkupno)
-            </th>
-            <th></th>
-        </tr>
-
-        @foreach (var item in Model)
-        {
+        <p>
+            @Html.ActionLink("Dodaj novog dobavljača", "Create")
+        </p>
+        <table class="table">
             <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.naziv)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.adresa)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.ratingKvalitet)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.ratingBrzinaIsporuke)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.ratingKomunikacija)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.ratingUkupno)
-                </td>
-                <td>
-                    @Html.ActionLink("Izmjena", "Edit", new { id = item.dobavljacID }) |
-                    @Html.ActionLink("Detaljno", "Details", new { id = item.dobavljacID }) |
-                    @Html.ActionLink("Brisanje", "Delete", new { id = item.dobavljacID }) |
-                    @Html.ActionLink("Izmjena Ratinga", "EditRating", new { id = item.dobavljacID })
-     </td>
-            </tr>
-        }
 
-    </table>
+                <th>
+                    Naziv dobavljača
+                </th>
+                <th>
+                    Adresa dobavljača
+                </th>
+                <th>
+                    Rating kvaliteta
+                </th>
+                <th>
+                    Rating brzine isporuke
+                </th>
+                <th>
+                    Rating komunikacije
+                </th>
+                <th>
+                    Ukupni rating
+                </th>
+                <th></th>
+            </tr>
+
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.naziv)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.adresa)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ratingKvalitet)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ratingBrzinaIsporuke)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ratingKomunikacija)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ratingUkupno)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Izmjena", "Edit", new { id = item.dobavljacID }) |
+                        @Html.ActionLink("Izmjena Ratinga", "EditRating", new { id = item.dobavljacID }) |
+                        @Html.ActionLink("Brisanje", "Delete", new { id = item.dobavljacID }) 
+                          </td>
+                </tr>
+            }
+
+        </table>
+    </div>
     </div>

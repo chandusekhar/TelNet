@@ -1,63 +1,76 @@
 ﻿@model IEnumerable<telNet.Models.usluga>
+<body>
+    <div class="services">
+        <div class="container">
+            <div class="text-center">
+            
+                <h2>Naše usluge</h2>
 
-@{
-    ViewBag.Title = "Index";
-}
+                      @if (ViewContext.HttpContext.User.IsInRole("Admin"))
+                      {
+                          <p>
+                              @Html.ActionLink("Kreiraj novu uslugu", "Create")
+                          </p>
+                      }
+                 @foreach (var item in Model)
+                 {
+                     var delay = item.uslugaID;
+                     var d = delay * 200;
+                     var dd = d.ToString();
 
+                    <div class="col-md-3 wow fadeInDown" data-wow-duration="1000ms" data-wow-delay=" @(dd + "ms") ">
 
-<div class="container">
+                        @if (delay != 0 && delay % 4 == 0)
+                        {
+                            <i class="fa fa-heart-o"></i>
+                        }
+                        else if (delay != 0 && delay % 3 == 0)
+                        {
+                            <i class="fa fa-gear"></i>
+                        }
+                        else if (delay != 0 && delay % 2 == 0)
+                        {
+                            <i class="fa fa-cloud"></i>
+                        }
+                        else
+                        {
+                            <i class="fa fa-book"></i>
+                        }
+                        <h3>
+                            @Html.DisplayFor(modelItem => item.nazivUsluge)
+                        </h3>
 
-    <h2>U S L U G E</h2>
-@if (ViewContext.HttpContext.User.IsInRole("Admin"))
-{
-    <p>
-        @Html.ActionLink("Kreiraj novu uslugu", "Create")
-    </p>
-}
-    <table class="table">
-        <tr>
-           
-            <th>
-                @Html.DisplayNameFor(model => model.nazivUsluge)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.tipUsluge)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.cijenaUsluge)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.opis)
-            </th>
-            <th></th>
-        </tr>
+                        <caption>
 
-        @foreach (var item in Model)
-        {
-            <tr>
-              
-                <td>
-                    @Html.DisplayFor(modelItem => item.nazivUsluge)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.tipUsluge)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.cijenaUsluge)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.opis)
-                </td>
-@if (ViewContext.HttpContext.User.IsInRole("Admin"))
-{
-                <td>
-                    @Html.ActionLink("Izmijeni", "Edit", new { id = item.uslugaID }) |
-                    @Html.ActionLink("Detaljno", "Details", new { id = item.uslugaID }) |
-                    @Html.ActionLink("Izbriši", "Delete", new { id = item.uslugaID })
-                </td>
-}
-            </tr>
-        }
+                            Tip usluge: @Html.DisplayFor(modelItem => item.tipUsluge)
+                            <br>
 
-    </table>
-    </div>
+                            @Html.DisplayFor(modelItem => item.cijenaUsluge) KM
+                            <br>
+                            @Html.DisplayFor(modelItem => item.opis)
+
+                            @if (ViewContext.HttpContext.User.IsInRole("Admin"))
+                            {
+                                <br>
+
+                                @Html.ActionLink("Izmijeni ", "Edit", new { id = item.uslugaID })
+                                <br>
+                                @Html.ActionLink("Izbriši", "Delete", new { id = item.uslugaID })
+
+                            }
+                        </caption>
+                    </div>
+                 }
+
+                        </div>
+                </div>
+            </div>
+
+                <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+                <script src="js/jquery.js"></script>
+                <!-- Include all compiled plugins (below), or include individual files as needed -->
+                <script src="js/bootstrap.min.js"></script>
+                <script src="js/wow.min.js"></script>
+                <script>wow = new WOW({}).init();</script>
+
+</body>
