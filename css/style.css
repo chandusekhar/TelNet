@@ -766,10 +766,11 @@ ul.social_icons li  a i{
 	position: relative;
 	display: block;
 	opacity: 0.8;
+    height: 250px;
 }
 
 .gallery figure figcaption {
-	padding: 2em;
+	padding: 0.5em;
 	color: #fff;
 	text-transform: uppercase;
 	font-size: 1.25em;
