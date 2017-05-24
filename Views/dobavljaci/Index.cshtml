@@ -4,42 +4,65 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<div class="container">
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.naziv)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.adresa)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ratingID)
-        </th>
-        <th></th>
-    </tr>
+    <h2>Upravljanje dobavljacima</h2>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.naziv)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.adresa)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ratingID)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.dobavljacID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.dobavljacID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.dobavljacID })
-        </td>
-    </tr>
-}
+    <p>
+        @Html.ActionLink("Dodaj novog", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.naziv)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.adresa)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ratingKvalitet)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ratingBrzinaIsporuke)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ratingKomunikacija)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ratingUkupno)
+            </th>
+            <th></th>
+        </tr>
 
-</table>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.naziv)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.adresa)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ratingKvalitet)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ratingBrzinaIsporuke)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ratingKomunikacija)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ratingUkupno)
+                </td>
+                <td>
+                    @Html.ActionLink("Izmjena", "Edit", new { id = item.dobavljacID }) |
+                    @Html.ActionLink("Detaljno", "Details", new { id = item.dobavljacID }) |
+                    @Html.ActionLink("Brisanje", "Delete", new { id = item.dobavljacID }) |
+                    @Html.ActionLink("Izmjena Ratinga", "EditRating", new { id = item.dobavljacID })
+     </td>
+            </tr>
+        }
+
+    </table>
+    </div>

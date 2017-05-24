@@ -21,6 +21,7 @@ namespace TelNet.Controllers
             return View(db.Dobavljaci.ToList());
         }
 
+        
         // GET: dobavljaci/Details/5
         public ActionResult Details(int? id)
         {
@@ -47,10 +48,11 @@ namespace TelNet.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "dobavljacID,naziv,adresa,ratingID")] dobavljac dobavljac)
+        public ActionResult Create([Bind(Include = "dobavljacID,naziv,adresa,ratingKvalitet,ratingBrzinaIsporuke,ratingKomunikacija")] dobavljac dobavljac)
         {
             if (ModelState.IsValid)
             {
+                dobavljac.ratingUkupno = dobavljac.ratingKvalitet + dobavljac.ratingKomunikacija+dobavljac.ratingBrzinaIsporuke;
                 db.Dobavljaci.Add(dobavljac);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -58,7 +60,33 @@ namespace TelNet.Controllers
 
             return View(dobavljac);
         }
-
+        // GET: dobavljaci/Edit/5
+        public ActionResult EditRating(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            dobavljac dobavljac = db.Dobavljaci.Find(id);
+            if (dobavljac == null)
+            {
+                return HttpNotFound();
+            }
+            return View(dobavljac);
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult EditRating([Bind(Include = "dobavljacID,naziv, adresa,ratingKvalitet,ratingBrzinaIsporuke,ratingKomunikacija")] dobavljac dobavljac)
+        {
+            if (ModelState.IsValid)
+            {
+                dobavljac.ratingUkupno = dobavljac.ratingKvalitet + dobavljac.ratingKomunikacija + dobavljac.ratingBrzinaIsporuke;
+                db.Entry(dobavljac).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            return View(dobavljac);
+        }
         // GET: dobavljaci/Edit/5
         public ActionResult Edit(int? id)
         {
@@ -79,17 +107,17 @@ namespace TelNet.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "dobavljacID,naziv,adresa,ratingID")] dobavljac dobavljac)
+        public ActionResult Edit([Bind(Include = "dobavljacID,naziv,adresa,ratingKvalitet,ratingBrzinaIsporuke,ratingKomunikacija,ratingUkupno")] dobavljac dobavljac)
         {
             if (ModelState.IsValid)
             {
+                dobavljac.ratingUkupno = dobavljac.ratingKvalitet + dobavljac.ratingKomunikacija + dobavljac.ratingBrzinaIsporuke;
                 db.Entry(dobavljac).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
             return View(dobavljac);
         }
-
         // GET: dobavljaci/Delete/5
         public ActionResult Delete(int? id)
         {

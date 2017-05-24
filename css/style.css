@@ -980,6 +980,8 @@ textarea#message{
 footer {
 	padding:50px;
 	background:#65AAF0;
+     bottom:0;
+ left:0;
 }
 
 footer p {

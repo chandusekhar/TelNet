@@ -241,6 +241,14 @@
     <Compile Include="Migrations\TelNetContext\201705172356053_DobavljaciRatinzi1.Designer.cs">
       <DependentUpon>201705172356053_DobavljaciRatinzi1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\TelNetContext\201705241100383_dobavljaciRatings.cs" />
+    <Compile Include="Migrations\TelNetContext\201705241100383_dobavljaciRatings.Designer.cs">
+      <DependentUpon>201705241100383_dobavljaciRatings.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\TelNetContext\201705241828298_dobavljaciRange.cs" />
+    <Compile Include="Migrations\TelNetContext\201705241828298_dobavljaciRange.Designer.cs">
+      <DependentUpon>201705241828298_dobavljaciRange.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\TelNetContext\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\dobavljac.cs" />
@@ -272,6 +280,8 @@
     <Content Include="css\animate.min.css" />
     <Content Include="css\bootstrap-theme.css" />
     <Content Include="css\bootstrap-theme.min.css" />
+    <Content Include="css\bootstrap.css" />
+    <Content Include="css\bootstrap.min.css" />
     <Content Include="css\font-awesome.css" />
     <Content Include="css\font-awesome.min.css" />
     <Content Include="css\style.css" />
@@ -411,16 +421,17 @@
     <Content Include="Views\usluge\Details.cshtml" />
     <Content Include="Views\usluge\Edit.cshtml" />
     <Content Include="Views\usluge\Index.cshtml" />
-    <Content Include="Views\dobavljaci\Create.cshtml" />
-    <Content Include="Views\dobavljaci\Delete.cshtml" />
-    <Content Include="Views\dobavljaci\Details.cshtml" />
-    <Content Include="Views\dobavljaci\Edit.cshtml" />
-    <Content Include="Views\dobavljaci\Index.cshtml" />
     <Content Include="Views\ratings\Create.cshtml" />
     <Content Include="Views\ratings\Delete.cshtml" />
     <Content Include="Views\ratings\Details.cshtml" />
     <Content Include="Views\ratings\Edit.cshtml" />
     <Content Include="Views\ratings\Index.cshtml" />
+    <Content Include="Views\dobavljaci\Create.cshtml" />
+    <Content Include="Views\dobavljaci\Delete.cshtml" />
+    <Content Include="Views\dobavljaci\Details.cshtml" />
+    <Content Include="Views\dobavljaci\Edit.cshtml" />
+    <Content Include="Views\dobavljaci\Index.cshtml" />
+    <Content Include="Views\dobavljaci\EditRating.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -443,6 +454,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\TelNetContext\201705172356053_DobavljaciRatinzi1.resx">
       <DependentUpon>201705172356053_DobavljaciRatinzi1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\TelNetContext\201705241100383_dobavljaciRatings.resx">
+      <DependentUpon>201705241100383_dobavljaciRatings.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\TelNetContext\201705241828298_dobavljaciRange.resx">
+      <DependentUpon>201705241828298_dobavljaciRange.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
