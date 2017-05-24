@@ -1,7 +1,7 @@
-﻿@model IEnumerable<telNet.Models.paket>
+﻿@model TelNet.ViewModels.PaketViewModel
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Paketi";
 }
 
 <h2>Index</h2>
@@ -11,27 +11,32 @@
 </p>
 <table class="table">
     <tr>
+      
         <th>
-            @Html.DisplayNameFor(model => model.katalog.nazivKataloga)
+           Naziv Paketa
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.nazivPaketa)
+            Cijena Paketa
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.cijenaPaketa)
+           Opis
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.opis)
+            Usluge
         </th>
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.katalog.nazivKataloga)
-        </td>
-        <td>
+@foreach (var item in Model.Paketi)
+{
+    string selectedRow = "";
+    if (item.paketID == ViewBag.paketID)
+    {
+        selectedRow = "success";
+    }
+    <tr class="@selectedRow">
+
+         <td>
             @Html.DisplayFor(modelItem => item.nazivPaketa)
         </td>
         <td>
@@ -41,9 +46,17 @@
             @Html.DisplayFor(modelItem => item.opis)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.paketID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.paketID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.paketID })
+            @{
+                foreach (var usluga in item.Usluge)
+                {
+                    @usluga.uslugaID @:  @usluga.nazivUsluge <br />
+        }
+            }
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.paketID }) |
+            @Html.ActionLink("Details", "Details", new { id = item.paketID }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.paketID })
         </td>
     </tr>
 }

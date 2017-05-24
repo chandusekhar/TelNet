@@ -9,7 +9,7 @@ namespace telNet.Models
     {
         public paket()
         {
-            this.paketiUsluga = new HashSet<paketUsluge>();
+            this.Usluge = new HashSet<usluga>();
             this.narudzbeUsluga = new HashSet<narudzbaUsluga>();
         }
 
@@ -18,11 +18,9 @@ namespace telNet.Models
         public float cijenaPaketa { get; set; }
         public string opis { get; set; }
 
-        public int katalogID { get; set; }
-
-        public virtual katalog katalog { get; set; }
-
-        public ICollection<paketUsluge> paketiUsluga { get; set; }
+      
+     
+        public virtual ICollection<usluga> Usluge { get; set; }
         public ICollection<narudzbaUsluga> narudzbeUsluga { get; set; }
     }
 }

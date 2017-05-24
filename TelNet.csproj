@@ -208,7 +208,6 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\dobavljaciController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\katalogController.cs" />
     <Compile Include="Controllers\KorisniciController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\OsobeController.cs" />
@@ -249,16 +248,30 @@
     <Compile Include="Migrations\TelNetContext\201705241828298_dobavljaciRange.Designer.cs">
       <DependentUpon>201705241828298_dobavljaciRange.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\TelNetContext\201705241947318_BezPaketaUsluga.cs" />
+    <Compile Include="Migrations\TelNetContext\201705241947318_BezPaketaUsluga.Designer.cs">
+      <DependentUpon>201705241947318_BezPaketaUsluga.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\TelNetContext\201705241950503_BezPaketaUsluga1.cs" />
+    <Compile Include="Migrations\TelNetContext\201705241950503_BezPaketaUsluga1.Designer.cs">
+      <DependentUpon>201705241950503_BezPaketaUsluga1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\TelNetContext\201705242013187_BezPaketaUsluga2.cs" />
+    <Compile Include="Migrations\TelNetContext\201705242013187_BezPaketaUsluga2.Designer.cs">
+      <DependentUpon>201705242013187_BezPaketaUsluga2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\TelNetContext\201705242021263_BezKATALOGA.cs" />
+    <Compile Include="Migrations\TelNetContext\201705242021263_BezKATALOGA.Designer.cs">
+      <DependentUpon>201705242021263_BezKATALOGA.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\TelNetContext\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\dobavljac.cs" />
     <Compile Include="Models\IdentityModels.cs" />
-    <Compile Include="Models\katalog.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\NarudzbaUsluga.cs" />
     <Compile Include="Models\Osoba.cs" />
     <Compile Include="Models\paket.cs" />
-    <Compile Include="Models\paketUsluge.cs" />
     <Compile Include="Models\ponuda.cs" />
     <Compile Include="Models\ponudaProizvoda.cs" />
     <Compile Include="Models\proizvod.cs" />
@@ -269,6 +282,8 @@
     <Compile Include="Models\usluga.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="ViewModels\IzabraneUsluge.cs" />
+    <Compile Include="ViewModels\PaketViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="contactform\readme.txt" />
@@ -385,11 +400,6 @@
     <Content Include="Views\Osobe\Details.cshtml" />
     <Content Include="Views\Osobe\Edit.cshtml" />
     <Content Include="Views\Osobe\Index.cshtml" />
-    <Content Include="Views\katalog\Create.cshtml" />
-    <Content Include="Views\katalog\Delete.cshtml" />
-    <Content Include="Views\katalog\Details.cshtml" />
-    <Content Include="Views\katalog\Edit.cshtml" />
-    <Content Include="Views\katalog\Index.cshtml" />
     <Content Include="Views\Korisnici\Index.cshtml" />
     <Content Include="Views\proizvodi\Create.cshtml" />
     <Content Include="Views\proizvodi\Delete.cshtml" />
@@ -460,6 +470,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\TelNetContext\201705241828298_dobavljaciRange.resx">
       <DependentUpon>201705241828298_dobavljaciRange.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\TelNetContext\201705241947318_BezPaketaUsluga.resx">
+      <DependentUpon>201705241947318_BezPaketaUsluga.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\TelNetContext\201705241950503_BezPaketaUsluga1.resx">
+      <DependentUpon>201705241950503_BezPaketaUsluga1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\TelNetContext\201705242013187_BezPaketaUsluga2.resx">
+      <DependentUpon>201705242013187_BezPaketaUsluga2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\TelNetContext\201705242021263_BezKATALOGA.resx">
+      <DependentUpon>201705242021263_BezKATALOGA.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

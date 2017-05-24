@@ -14,12 +14,10 @@ namespace TelNet.DAL
         {
         }
         public DbSet<dobavljac> Dobavljaci { get; set; }
-        public DbSet<katalog> Katalozi { get; set; }
         public DbSet<narudzbaUsluga> NarudzbeUsluga { get; set; }
         public DbSet<Osoba> Osobe { get; set; }
         public DbSet<paket> Paketi { get; set; }
-        public DbSet<paketUsluge> PaketiUsluga { get; set; }
-        public DbSet<ponuda> Ponude { get; set; }
+       public DbSet<ponuda> Ponude { get; set; }
         public DbSet<ponudaProizvoda> PonudeProizvoda { get; set; }
         public DbSet<proizvod> Proizvodi { get; set; }
         public DbSet<rating> Ratinzi { get; set; }
@@ -32,7 +30,15 @@ namespace TelNet.DAL
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
-        }
+          
+         
+            modelBuilder.Entity<paket>()
+                .HasMany(c => c.Usluge).WithMany(i => i.Paketi)
+                .Map(t => t.MapLeftKey("paketID")
+                    .MapRightKey("uslugaID")
+                    .ToTable("PaketiUsluga"));
+        
+    }
     }
 }
 

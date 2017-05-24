@@ -20,7 +20,7 @@ namespace TelNet.Controllers
         [AllowAnonymous]
         public ActionResult Index()
         {
-            var usluge = db.Usluge.Include(u => u.katalog);
+            var usluge = db.Usluge;
             return View(usluge.ToList());
         }
 
@@ -43,7 +43,6 @@ namespace TelNet.Controllers
         [Authorize(Roles = "Admin")]
         public ActionResult Create()
         {
-            ViewBag.katalogID = new SelectList(db.Katalozi, "katalogID", "nazivKataloga");
             return View();
         }
 
@@ -53,7 +52,7 @@ namespace TelNet.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize(Roles = "Admin")]
-        public ActionResult Create([Bind(Include = "uslugaID,nazivUsluge,tipUsluge,cijenaUsluge,opis,katalogID")] usluga usluga)
+        public ActionResult Create([Bind(Include = "uslugaID,nazivUsluge,tipUsluge,cijenaUsluge,opis")] usluga usluga)
         {
             if (ModelState.IsValid)
             {
@@ -62,7 +61,6 @@ namespace TelNet.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.katalogID = new SelectList(db.Katalozi, "katalogID", "nazivKataloga", usluga.katalogID);
             return View(usluga);
         }
 
@@ -80,8 +78,7 @@ namespace TelNet.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.katalogID = new SelectList(db.Katalozi, "katalogID", "nazivKataloga", usluga.katalogID);
-            return View(usluga);
+          return View(usluga);
         }
 
         // POST: usluge/Edit/5
@@ -91,7 +88,7 @@ namespace TelNet.Controllers
         [ValidateAntiForgeryToken]
         [Authorize(Roles = "Admin")]
 
-        public ActionResult Edit([Bind(Include = "uslugaID,nazivUsluge,tipUsluge,cijenaUsluge,opis,katalogID")] usluga usluga)
+        public ActionResult Edit([Bind(Include = "uslugaID,nazivUsluge,tipUsluge,cijenaUsluge,opis")] usluga usluga)
         {
             if (ModelState.IsValid)
             {
@@ -99,7 +96,6 @@ namespace TelNet.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.katalogID = new SelectList(db.Katalozi, "katalogID", "nazivKataloga", usluga.katalogID);
             return View(usluga);
         }
 
