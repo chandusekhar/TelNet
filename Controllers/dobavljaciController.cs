@@ -16,9 +16,35 @@ namespace TelNet.Controllers
         private TelNetContext db = new TelNetContext();
 
         // GET: dobavljaci
-        public ActionResult Index()
+        public ActionResult Index(string sort)
         {
-            return View(db.Dobavljaci.ToList());
+            //if the sort parameter is null or empty then we are initializing the value as descending name  
+            ViewBag.SortByNaziv = string.IsNullOrEmpty(sort) ? "descending naziv" : "";
+            //if the sort value is gender then we are initializing the value as descending gender  
+            ViewBag.SortByRating = sort == "Rating" ? "descending rating" : "Rating";
+            var records = db.Dobavljaci.AsQueryable();
+            
+            switch (sort)
+            {
+
+                case "descending naziv":
+                    records = records.OrderByDescending(x => x.naziv);
+                    break;
+
+                case "descending rating":
+                    records = records.OrderByDescending(x => x.ratingUkupno);
+                    break;
+
+                case "Rating":
+                    records = records.OrderBy(x => x.ratingUkupno);
+                    break;
+
+                default:
+                    records = records.OrderBy(x => x.naziv);
+                    break;
+
+            }
+            return View(records.ToList());
         }
 
         

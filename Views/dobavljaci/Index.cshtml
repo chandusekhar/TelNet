@@ -13,10 +13,11 @@
             @Html.ActionLink("Dodaj novog dobavljača", "Create")
         </p>
         <table class="table">
-            <tr>
+          
+            <th>
+                @Html.ActionLink("Naziv dobavljača", "Index", new { sort = ViewBag.SortByName })
+            </th>
 
-                <th>
-                    Naziv dobavljača
                 </th>
                 <th>
                     Adresa dobavljača
@@ -31,7 +32,9 @@
                     Rating komunikacije
                 </th>
                 <th>
-                    Ukupni rating
+                    @Html.ActionLink("Ukupni rating", "Index", new { sort = ViewBag.SortByRating })
+
+
                 </th>
                 <th></th>
             </tr>
