@@ -12,7 +12,8 @@ namespace TelNet
         public void Configuration(IAppBuilder app)
         {
             ConfigureAuth(app);
-            createRolesandUsers();
+          createRolesandUsers();
+          
         }
         // In this method we will create default User roles and Admin user for login    
         private void createRolesandUsers()
@@ -34,14 +35,14 @@ namespace TelNet
 
                 //Here we create a Admin super user who will maintain the website                   
                 
-                var user = new ApplicationUser();
+              /*  var user = new ApplicationUser();
                 user.UserName = "Emina";
                 user.Email = "huskic.emina@gmail.com";
                 string userPWD = "Emina";
                 var chkUser = UserManager.Create(user, userPWD);
-                
+                */
                 //Add default User to Role Admin    
-                user = UserManager.FindByEmail("huskic.emina@gmail.com");
+                var user = UserManager.FindByEmail("huskic.emina@gmail.com");
 
                 var result1 = UserManager.AddToRole(user.Id, "Admin");
 
@@ -72,6 +73,7 @@ namespace TelNet
                 roleManager.Create(role);
 
             }
+
         }
     }
 }

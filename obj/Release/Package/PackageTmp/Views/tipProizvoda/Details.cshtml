@@ -1,0 +1,34 @@
+﻿@model telNet.Models.tipProizvoda
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>tipProizvoda</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.nazivTipa)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nazivTipa)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.proizvodjac)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.proizvodjac)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.tipProizvodaID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

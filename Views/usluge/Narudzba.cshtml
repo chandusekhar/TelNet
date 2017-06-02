@@ -1,0 +1,44 @@
+﻿@model TelNet.ViewModels.UslugaNarudzba
+
+@{
+    ViewBag.Title = "Narudzba";
+}
+
+<h2>Narudzba</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+       <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.usluga.cijenaUsluge)
+        @Html.HiddenFor(model => model.usluga.nazivUsluge)
+        @Html.HiddenFor(model => model.usluga.opis)
+        @Html.HiddenFor(model => model.usluga.tipUsluge)
+        @Html.HiddenFor(model => model.usluga.uslugaID)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.datum, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.datum, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.datum, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.komentar, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.komentar, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.komentar, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Narudzba" class="btn btn-default" />
+            </div>
+        </div>
+        </div>
+}
+
+

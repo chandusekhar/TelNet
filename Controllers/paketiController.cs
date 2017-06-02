@@ -13,7 +13,7 @@ using System.Data.Entity.Infrastructure;
 
 namespace TelNet.Controllers
 {
-    public class paketiController : Controller
+     public class paketiController : Controller
     {
         private TelNetContext db = new TelNetContext();
 
@@ -48,7 +48,7 @@ namespace TelNet.Controllers
             }
             return View(paket);
         }
-
+        [Authorize(Roles = "Admin, Employee")]
         // GET: paketi/Create
         public ActionResult Create()
         {
@@ -58,6 +58,8 @@ namespace TelNet.Controllers
         // POST: paketi/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [Authorize(Roles = "Admin, Employee")]
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "paketID,nazivPaketa,cijenaPaketa,opis")] paket paket)
@@ -73,6 +75,8 @@ namespace TelNet.Controllers
         }
 
         // GET: paketi/Edit/5
+        [Authorize(Roles = "Admin, Employee")]
+
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -91,6 +95,8 @@ namespace TelNet.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin, Employee")]
+
         public ActionResult Edit(int? id, string[] izabraneUsluge)
         {
             if (id == null)
@@ -144,6 +150,7 @@ namespace TelNet.Controllers
             return View(paket);
         }
         */
+     
         private paket UpdateIzabraneUsluge(string[] izabraneUsluge, paket paket)
         {
             if (izabraneUsluge == null)
@@ -175,6 +182,8 @@ namespace TelNet.Controllers
             return paket;
         }
         // GET: paketi/Delete/5
+        [Authorize(Roles = "Admin, Employee")]
+
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -206,6 +215,8 @@ namespace TelNet.Controllers
             ViewBag.Usluge = viewModel;
         }
         // POST: paketi/Delete/5
+        [Authorize(Roles = "Admin, Employee")]
+
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)

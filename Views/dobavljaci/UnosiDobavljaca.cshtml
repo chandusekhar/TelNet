@@ -1,0 +1,68 @@
+﻿@model IEnumerable<TelNet.Models.DobavljacUnos>
+
+@{
+    ViewBag.Title = "Historija izmjene ratinga dobavljaca";
+}
+
+<div class="services">
+    <div class="container">
+        <h2>Historija izmjene ratinga dobavljača @Html.Raw(ViewBag.Dobavljac)
+        </h2>
+  
+        <table class="table">
+            <tr>
+                <th>
+                    Komentar
+                </th>
+                <th>
+                    Datum Unosa
+                </th>
+                <th>
+                    Rok važenja ratinga
+                </th>
+                <th>
+                    Rating kvaliteta
+                </th>
+                <th>
+                    Rating brzine isporuke
+                </th>
+                <th>
+                    Rating komunikacije
+                </th>
+                <th>
+                    Ukupni rating
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.komentar)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.datumUnosa)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.rokVazenja)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ratingKvalitet)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ratingBrzinaIsporuke)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ratingKomunikacija)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ratingUkupno)
+                    </td>
+                    <td></td>
+                </tr>
+            }
+
+        </table>
+        </div>
+</div>

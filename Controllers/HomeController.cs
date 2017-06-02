@@ -25,8 +25,7 @@ namespace TelNet.Controllers
         public ActionResult Contact()
         {
             ViewBag.Message = "Your contact page.";
-
-            return View();
+           return View();
         }
 
         [HttpPost]
@@ -43,10 +42,12 @@ namespace TelNet.Controllers
                 MailMessage mail = new MailMessage();
                 SmtpClient SmtpServer = new SmtpClient("smtp.gmail.com");
                 mail.From = new MailAddress(podaci.email);
+                mail.Sender = new MailAddress(podaci.email);
+                mail.ReplyTo = new MailAddress(podaci.email);
                 mail.To.Add("huskic.emina@gmail.com");
                 mail.Subject =podaci.naslov;
                 mail.Body = podaci.poruka;
-
+                SmtpServer.UseDefaultCredentials = false;
                 SmtpServer.Port = 587;
                 SmtpServer.Credentials = new System.Net.NetworkCredential("huskic.emina@gmail.com", "Kristal1$");
                 SmtpServer.EnableSsl = true;

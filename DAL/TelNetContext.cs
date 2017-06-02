@@ -17,21 +17,18 @@ namespace TelNet.DAL
         public DbSet<narudzbaUsluga> NarudzbeUsluga { get; set; }
         public DbSet<Osoba> Osobe { get; set; }
         public DbSet<paket> Paketi { get; set; }
-       public DbSet<ponuda> Ponude { get; set; }
-        public DbSet<ponudaProizvoda> PonudeProizvoda { get; set; }
-        public DbSet<proizvod> Proizvodi { get; set; }
+        public DbSet<Proizvod> Proizvodi { get; set; }
         public DbSet<rating> Ratinzi { get; set; }
-        public DbSet<statusPonude> StatusiPonuda { get; set; }
-        public DbSet<tip> Tipovi { get; set; }
+         public DbSet<tip> Tipovi { get; set; }
         public DbSet<tipProizvoda> TipoviProizvoda { get; set; }
         public DbSet<usluga> Usluge { get; set; }
 
-
+        public DbSet<DobavljacUnos> UnosiDobavljaca { get; set; }
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
-          
          
+            modelBuilder.Entity<narudzbaUsluga>().HasRequired(m => m.usluga).WithMany(m => m.narudzbeUsluga).HasForeignKey(m => m.uslugaID);
             modelBuilder.Entity<paket>()
                 .HasMany(c => c.Usluge).WithMany(i => i.Paketi)
                 .Map(t => t.MapLeftKey("paketID")

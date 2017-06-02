@@ -1,13 +1,14 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
-using System.Web;
 using System.Web.Mvc;
 using TelNet.DAL;
 using telNet.Models;
+using TelNet.Models;
+using System.Data.Entity.Infrastructure;
+using TelNet.ViewModels;
 
 namespace TelNet.Controllers
 {
@@ -19,7 +20,7 @@ namespace TelNet.Controllers
         public ActionResult Index(string sort)
         {
             //if the sort parameter is null or empty then we are initializing the value as descending name  
-            ViewBag.SortByNaziv = string.IsNullOrEmpty(sort) ? "descending naziv" : "";
+            ViewBag.SortByName = string.IsNullOrEmpty(sort) ? "descending naziv" : "";
             //if the sort value is gender then we are initializing the value as descending gender  
             ViewBag.SortByRating = sort == "Rating" ? "descending rating" : "Rating";
             var records = db.Dobavljaci.AsQueryable();
@@ -63,6 +64,22 @@ namespace TelNet.Controllers
             return View(dobavljac);
         }
 
+        public ActionResult UnosiDobavljaca(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+          
+            dobavljac dobavljac = db.Dobavljaci.Include(i => i.Unosi).Where(i => i.dobavljacID == id).Single();
+            if (dobavljac == null)
+            {
+                return HttpNotFound();
+            }
+            ViewBag.Dobavljac = dobavljac.naziv;
+            return View(dobavljac.Unosi);
+        }
+
         // GET: dobavljaci/Create
         public ActionResult Create()
         {
@@ -79,6 +96,7 @@ namespace TelNet.Controllers
             if (ModelState.IsValid)
             {
                 dobavljac.ratingUkupno = dobavljac.ratingKvalitet + dobavljac.ratingKomunikacija+dobavljac.ratingBrzinaIsporuke;
+                dobavljac.RokVazenjaRatinga = DateTime.Now.AddMonths(6);
                 db.Dobavljaci.Add(dobavljac);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -89,29 +107,52 @@ namespace TelNet.Controllers
         // GET: dobavljaci/Edit/5
         public ActionResult EditRating(int? id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
             dobavljac dobavljac = db.Dobavljaci.Find(id);
+            DobavljacKomentar dbk = new DobavljacKomentar();
+            dbk.dobavljac = dobavljac;
+            dbk.komentar = "Bez komentara";
             if (dobavljac == null)
             {
                 return HttpNotFound();
             }
-            return View(dobavljac);
+            ViewBag.Koment = dbk;
+            return View(dbk);
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult EditRating([Bind(Include = "dobavljacID,naziv, adresa,ratingKvalitet,ratingBrzinaIsporuke,ratingKomunikacija")] dobavljac dobavljac)
+        public ActionResult EditRating(DobavljacKomentar dbk)
         {
             if (ModelState.IsValid)
             {
-                dobavljac.ratingUkupno = dobavljac.ratingKvalitet + dobavljac.ratingKomunikacija + dobavljac.ratingBrzinaIsporuke;
-                db.Entry(dobavljac).State = EntityState.Modified;
+                dbk.dobavljac.ratingUkupno = dbk.dobavljac.ratingKvalitet + dbk.dobavljac.ratingKomunikacija + dbk.dobavljac.ratingBrzinaIsporuke;
+                dbk.dobavljac.RokVazenjaRatinga = DateTime.Now.AddMonths(6);
+                DobavljacUnos unos = new DobavljacUnos(dbk.komentar, DateTime.Now, dbk.dobavljac.RokVazenjaRatinga, dbk.dobavljac.ratingKvalitet, dbk.dobavljac.ratingBrzinaIsporuke, dbk.dobavljac.ratingKomunikacija, dbk.dobavljac.ratingUkupno, dbk.dobavljac);
+                db.Entry(dbk.dobavljac).State = EntityState.Modified;
+                var dobo = db.Dobavljaci
+           .Include(i => i.Unosi)
+           .Where(i => i.dobavljacID == dbk.dobavljac.dobavljacID)
+           .Single();
+
+                if (TryUpdateModel(dobo, "",
+                   new string[] { "naziv", "adresa", "ratingKvalitet", "ratingBrzinaIsporuke", "ratingKomunikacija", "ratingUkupno", "RokVazenjaRatinga" }))
+                {
+                    try
+                    {
+                        dobo.Unosi.Add(unos);
+                        db.Entry(dobo).State = EntityState.Modified;
+
+                    }
+                    catch (RetryLimitExceededException /* dex */)
+                    {
+                        //Log the error (uncomment dex variable name and add a line here to write a log.
+                        ModelState.AddModelError("", "Unable to save changes. Try again, and if the problem persists, see your system administrator.");
+                    }
+                }
+                db.UnosiDobavljaca.Add(unos);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(dobavljac);
+            return View(dbk.dobavljac);
         }
         // GET: dobavljaci/Edit/5
         public ActionResult Edit(int? id)
@@ -121,11 +162,15 @@ namespace TelNet.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             dobavljac dobavljac = db.Dobavljaci.Find(id);
+            DobavljacKomentar dbk = new DobavljacKomentar();
+            dbk.dobavljac = dobavljac;
+            dbk.komentar = "Bez komentara";
             if (dobavljac == null)
             {
                 return HttpNotFound();
             }
-            return View(dobavljac);
+            ViewBag.Koment = dbk;
+            return View(dbk);
         }
 
         // POST: dobavljaci/Edit/5
@@ -133,17 +178,43 @@ namespace TelNet.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "dobavljacID,naziv,adresa,ratingKvalitet,ratingBrzinaIsporuke,ratingKomunikacija,ratingUkupno")] dobavljac dobavljac)
+        public ActionResult Edit(DobavljacKomentar dbk) //[Bind(Include = "dobavljacID,naziv,adresa,ratingKvalitet,ratingBrzinaIsporuke,ratingKomunikacija,ratingUkupno")] dobavljac dobavljac)
         {
             if (ModelState.IsValid)
             {
-                dobavljac.ratingUkupno = dobavljac.ratingKvalitet + dobavljac.ratingKomunikacija + dobavljac.ratingBrzinaIsporuke;
-                db.Entry(dobavljac).State = EntityState.Modified;
+                dbk.dobavljac.ratingUkupno = dbk.dobavljac.ratingKvalitet + dbk.dobavljac.ratingKomunikacija + dbk.dobavljac.ratingBrzinaIsporuke;
+                dbk.dobavljac.RokVazenjaRatinga = DateTime.Now.AddMonths(6);
+                DobavljacUnos unos = new DobavljacUnos(dbk.komentar, DateTime.Now, dbk.dobavljac.RokVazenjaRatinga, dbk.dobavljac.ratingKvalitet, dbk.dobavljac.ratingBrzinaIsporuke, dbk.dobavljac.ratingKomunikacija, dbk.dobavljac.ratingUkupno, dbk.dobavljac);
+               
+                db.Entry(dbk.dobavljac).State = EntityState.Modified;
+                var dobo = db.Dobavljaci
+            .Include(i => i.Unosi)
+            .Where(i => i.dobavljacID == dbk.dobavljac.dobavljacID)
+            .Single();
+
+                if (TryUpdateModel(dobo, "",
+                   new string[] { "naziv", "adresa", "ratingKvalitet", "ratingBrzinaIsporuke", "ratingKomunikacija", "ratingUkupno","RokVazenjaRatinga" }))
+                {
+                    try
+                    {
+                        dobo.Unosi.Add(unos);
+                        db.Entry(dobo).State = EntityState.Modified;
+
+                    }
+                    catch (RetryLimitExceededException /* dex */)
+                    {
+                        //Log the error (uncomment dex variable name and add a line here to write a log.
+                        ModelState.AddModelError("", "Unable to save changes. Try again, and if the problem persists, see your system administrator.");
+                    }
+                }
+                db.UnosiDobavljaca.Add(unos);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(dobavljac);
+            return View(dbk.dobavljac);
         }
+
+ 
         // GET: dobavljaci/Delete/5
         public ActionResult Delete(int? id)
         {

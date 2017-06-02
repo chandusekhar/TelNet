@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 
@@ -9,8 +10,8 @@ namespace telNet.Models
     {
         public usluga()
         {
-            this.Paketi = new HashSet<paket>();
-            this.narudzbeUsluga = new HashSet<narudzbaUsluga>();
+            this.Paketi = new List<paket>();
+            this.narudzbeUsluga = new List<narudzbaUsluga>();
         }
 
         public int uslugaID { get; set; }
@@ -19,9 +20,8 @@ namespace telNet.Models
         public float cijenaUsluge { get; set; }
         public string opis { get; set; }
 
-      
-     
         public virtual ICollection<paket> Paketi { get; set; }
-        public ICollection<narudzbaUsluga> narudzbeUsluga { get; set; }
+
+        public virtual ICollection<narudzbaUsluga> narudzbeUsluga { get; set; }
     }
 }

@@ -9,8 +9,7 @@ namespace telNet.Models
     {
         public Osoba()
         {
-            this.statusPonuda = new HashSet<statusPonude>();
-            this.narudzbeUsluga = new HashSet<narudzbaUsluga>();
+           this.narudzbeUsluga = new HashSet<narudzbaUsluga>();
         }
 
         public int osobaID { get; set; }
@@ -25,8 +24,6 @@ namespace telNet.Models
         public int tipID { get; set; }
 
         public virtual tip tip { get; set; }
-
-        public ICollection<statusPonude> statusPonuda { get; set; }
-        public ICollection<narudzbaUsluga> narudzbeUsluga { get; set; }
+  public ICollection<narudzbaUsluga> narudzbeUsluga { get; set; }
     }
 }

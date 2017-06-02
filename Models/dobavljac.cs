@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
+using TelNet.Models;
 
 namespace telNet.Models
 {
@@ -10,7 +11,7 @@ namespace telNet.Models
     {
         public dobavljac()
         {
-            this.ponude = new HashSet<ponuda>();
+           this.Unosi = new List<DobavljacUnos>();
         }
         public int dobavljacID { get; set; }
         public string naziv { get; set; }
@@ -23,8 +24,11 @@ namespace telNet.Models
         public int ratingKomunikacija { get; set; }
         public int ratingUkupno { get; set; }
 
+        public DateTime RokVazenjaRatinga { get; set; }
+
         public virtual ICollection<rating> ratings { get; set; }
 
-        public virtual ICollection<ponuda> ponude { get; set; }
+       
+        public virtual ICollection<DobavljacUnos> Unosi { get; set; }
     }
 }

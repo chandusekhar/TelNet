@@ -2,25 +2,20 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using telNet.Models;
 
-namespace telNet.Models
+namespace TelNet.Models
 {
-    public class proizvod
+    public class Proizvod
     {
-        public proizvod()
-        {
-            this.ponudeProizvoda = new HashSet<ponudaProizvoda>();
-        }
-
         public int proizvodID { get; set; }
-        public int kvalitetaProizvoda { get; set; }
-        public float cijenaProizvoda { get; set; }
+        public double cijenaProizvoda { get; set; }
         public string opisProizvoda { get; set; }
-
+        
         public int tipProizvodaID { get; set; }
+        public int dobavljacID { get; set; }
+        public  tipProizvoda TipProizvoda {get;set;}
+        public dobavljac Dobavljac { get; set; }
 
-        public tipProizvoda tipProizvoda { get; set; }
-
-        public ICollection<ponudaProizvoda> ponudeProizvoda { get; set; }
     }
 }

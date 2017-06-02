@@ -37,7 +37,7 @@
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
+    <Optimize>false</Optimize>
     <OutputPath>bin\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
@@ -212,9 +212,7 @@
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\OsobeController.cs" />
     <Compile Include="Controllers\paketiController.cs" />
-    <Compile Include="Controllers\ponudaProizvodaController.cs" />
-    <Compile Include="Controllers\ponudeController.cs" />
-    <Compile Include="Controllers\proizvodiController.cs" />
+    <Compile Include="Controllers\ProizvodiController.cs" />
     <Compile Include="Controllers\ratingsController.cs" />
     <Compile Include="Controllers\tipProizvodaController.cs" />
     <Compile Include="Controllers\uslugeController.cs" />
@@ -226,6 +224,34 @@
     <Compile Include="Migrations\ApplicationDbContext\201705172206522_InitialDatabaseCreation.cs" />
     <Compile Include="Migrations\ApplicationDbContext\201705172206522_InitialDatabaseCreation.Designer.cs">
       <DependentUpon>201705172206522_InitialDatabaseCreation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\ApplicationDbContext\201705251408447_dobavljaciRokVazenja.cs" />
+    <Compile Include="Migrations\ApplicationDbContext\201705251408447_dobavljaciRokVazenja.Designer.cs">
+      <DependentUpon>201705251408447_dobavljaciRokVazenja.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\ApplicationDbContext\201705281526199_dobavljaciRokVazenja1.cs" />
+    <Compile Include="Migrations\ApplicationDbContext\201705281526199_dobavljaciRokVazenja1.Designer.cs">
+      <DependentUpon>201705281526199_dobavljaciRokVazenja1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\ApplicationDbContext\201705281534157_dobavljaciRokVazenja2.cs" />
+    <Compile Include="Migrations\ApplicationDbContext\201705281534157_dobavljaciRokVazenja2.Designer.cs">
+      <DependentUpon>201705281534157_dobavljaciRokVazenja2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\ApplicationDbContext\201705281546136_dobavljaciRokVazenja3.cs" />
+    <Compile Include="Migrations\ApplicationDbContext\201705281546136_dobavljaciRokVazenja3.Designer.cs">
+      <DependentUpon>201705281546136_dobavljaciRokVazenja3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\ApplicationDbContext\201705301404332_nova.cs" />
+    <Compile Include="Migrations\ApplicationDbContext\201705301404332_nova.Designer.cs">
+      <DependentUpon>201705301404332_nova.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\ApplicationDbContext\201705301410466_nova1.cs" />
+    <Compile Include="Migrations\ApplicationDbContext\201705301410466_nova1.Designer.cs">
+      <DependentUpon>201705301410466_nova1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\ApplicationDbContext\201705301411536_nova2.cs" />
+    <Compile Include="Migrations\ApplicationDbContext\201705301411536_nova2.Designer.cs">
+      <DependentUpon>201705301411536_nova2.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\ApplicationDbContext\Configuration.cs" />
     <Compile Include="Migrations\TelNetContext\201705172208433_InitialDatabaseCreation.cs" />
@@ -264,27 +290,116 @@
     <Compile Include="Migrations\TelNetContext\201705242021263_BezKATALOGA.Designer.cs">
       <DependentUpon>201705242021263_BezKATALOGA.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\TelNetContext\201705251340422_dobavljaciRokVazenja.cs" />
+    <Compile Include="Migrations\TelNetContext\201705251340422_dobavljaciRokVazenja.Designer.cs">
+      <DependentUpon>201705251340422_dobavljaciRokVazenja.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\TelNetContext\201705251409082_dobavljaciRokVazenja1.cs" />
+    <Compile Include="Migrations\TelNetContext\201705251409082_dobavljaciRokVazenja1.Designer.cs">
+      <DependentUpon>201705251409082_dobavljaciRokVazenja1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\TelNetContext\201705281519174_dobavljaciunos.cs" />
+    <Compile Include="Migrations\TelNetContext\201705281519174_dobavljaciunos.Designer.cs">
+      <DependentUpon>201705281519174_dobavljaciunos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\TelNetContext\201705281533368_dobavljaciunos1.cs" />
+    <Compile Include="Migrations\TelNetContext\201705281533368_dobavljaciunos1.Designer.cs">
+      <DependentUpon>201705281533368_dobavljaciunos1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\TelNetContext\201705281546358_dobavljaciunos2.cs" />
+    <Compile Include="Migrations\TelNetContext\201705281546358_dobavljaciunos2.Designer.cs">
+      <DependentUpon>201705281546358_dobavljaciunos2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\TelNetContext\201705281614477_dobavljaciunos3.cs" />
+    <Compile Include="Migrations\TelNetContext\201705281614477_dobavljaciunos3.Designer.cs">
+      <DependentUpon>201705281614477_dobavljaciunos3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\TelNetContext\201705281659242_dobavljaciunos4.cs" />
+    <Compile Include="Migrations\TelNetContext\201705281659242_dobavljaciunos4.Designer.cs">
+      <DependentUpon>201705281659242_dobavljaciunos4.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\TelNetContext\201705282209142_dobavljaciProizvodi.cs" />
+    <Compile Include="Migrations\TelNetContext\201705282209142_dobavljaciProizvodi.Designer.cs">
+      <DependentUpon>201705282209142_dobavljaciProizvodi.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\TelNetContext\201705282222173_svastaNesto.cs" />
+    <Compile Include="Migrations\TelNetContext\201705282222173_svastaNesto.Designer.cs">
+      <DependentUpon>201705282222173_svastaNesto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\TelNetContext\201705282227370_svastaNesto1.cs" />
+    <Compile Include="Migrations\TelNetContext\201705282227370_svastaNesto1.Designer.cs">
+      <DependentUpon>201705282227370_svastaNesto1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\TelNetContext\201705282230136_proizvodi.cs" />
+    <Compile Include="Migrations\TelNetContext\201705282230136_proizvodi.Designer.cs">
+      <DependentUpon>201705282230136_proizvodi.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\TelNetContext\201705291715184_proizvodi1.cs" />
+    <Compile Include="Migrations\TelNetContext\201705291715184_proizvodi1.Designer.cs">
+      <DependentUpon>201705291715184_proizvodi1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\TelNetContext\201705300949333_narucenausluga.cs" />
+    <Compile Include="Migrations\TelNetContext\201705300949333_narucenausluga.Designer.cs">
+      <DependentUpon>201705300949333_narucenausluga.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\TelNetContext\201705300952389_narucenausluga1.cs" />
+    <Compile Include="Migrations\TelNetContext\201705300952389_narucenausluga1.Designer.cs">
+      <DependentUpon>201705300952389_narucenausluga1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\TelNetContext\201705301017147_narudzbausluga.cs" />
+    <Compile Include="Migrations\TelNetContext\201705301017147_narudzbausluga.Designer.cs">
+      <DependentUpon>201705301017147_narudzbausluga.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\TelNetContext\201705301034492_narudzbausluga1.cs" />
+    <Compile Include="Migrations\TelNetContext\201705301034492_narudzbausluga1.Designer.cs">
+      <DependentUpon>201705301034492_narudzbausluga1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\TelNetContext\201705301138215_narudzbausluga2.cs" />
+    <Compile Include="Migrations\TelNetContext\201705301138215_narudzbausluga2.Designer.cs">
+      <DependentUpon>201705301138215_narudzbausluga2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\TelNetContext\201705301147180_narudzbausluga3.cs" />
+    <Compile Include="Migrations\TelNetContext\201705301147180_narudzbausluga3.Designer.cs">
+      <DependentUpon>201705301147180_narudzbausluga3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\TelNetContext\201705301157197_narudzbausluga4.cs" />
+    <Compile Include="Migrations\TelNetContext\201705301157197_narudzbausluga4.Designer.cs">
+      <DependentUpon>201705301157197_narudzbausluga4.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\TelNetContext\201705301201507_narudzbausluga5.cs" />
+    <Compile Include="Migrations\TelNetContext\201705301201507_narudzbausluga5.Designer.cs">
+      <DependentUpon>201705301201507_narudzbausluga5.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\TelNetContext\201705301405061_nova.cs" />
+    <Compile Include="Migrations\TelNetContext\201705301405061_nova.Designer.cs">
+      <DependentUpon>201705301405061_nova.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\TelNetContext\201705301412238_nova1.cs" />
+    <Compile Include="Migrations\TelNetContext\201705301412238_nova1.Designer.cs">
+      <DependentUpon>201705301412238_nova1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\TelNetContext\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\dobavljac.cs" />
+    <Compile Include="Models\DobavljacUnos.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\NarudzbaUsluga.cs" />
     <Compile Include="Models\Osoba.cs" />
     <Compile Include="Models\paket.cs" />
-    <Compile Include="Models\ponuda.cs" />
-    <Compile Include="Models\ponudaProizvoda.cs" />
-    <Compile Include="Models\proizvod.cs" />
+    <Compile Include="Models\Proizvod.cs" />
     <Compile Include="Models\rating.cs" />
-    <Compile Include="Models\statusPonude.cs" />
     <Compile Include="Models\tip.cs" />
     <Compile Include="Models\tipProizvoda.cs" />
+    <Compile Include="Models\User.cs" />
     <Compile Include="Models\usluga.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="ViewModels\DobavljacKomentar.cs" />
     <Compile Include="ViewModels\IzabraneUsluge.cs" />
     <Compile Include="ViewModels\MailData.cs" />
     <Compile Include="ViewModels\PaketViewModel.cs" />
+    <Compile Include="ViewModels\UslugaNarudzba.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="contactform\readme.txt" />
@@ -323,6 +438,7 @@
     <Content Include="fonts\fontawesome-webfont.ttf" />
     <Content Include="fonts\fontawesome-webfont.woff" />
     <Content Include="fonts\FontAwesome.otf" />
+    <None Include="Properties\PublishProfiles\TelNet20170525114130 - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="img\1.jpg" />
     <Content Include="img\10.jpg" />
@@ -342,7 +458,14 @@
     <Content Include="img\man2.jpg" />
     <Content Include="img\man3.jpg" />
     <Content Include="img\man4.jpg" />
+    <Content Include="img\pexels.jpg" />
     <Content Include="img\slide.jpg" />
+    <Content Include="img\techno1.jpeg" />
+    <Content Include="img\techno2.jpeg" />
+    <Content Include="img\techno3.jpeg" />
+    <Content Include="img\techno4.jpg" />
+    <Content Include="img\techno5.jpeg" />
+    <Content Include="img\techno6.jpeg" />
     <Content Include="js\bootstrap.js" />
     <Content Include="js\bootstrap.min.js" />
     <Content Include="js\jquery.js" />
@@ -376,18 +499,6 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
-    <Content Include="Views\Account\ConfirmEmail.cshtml" />
-    <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />
-    <Content Include="Views\Account\ExternalLoginFailure.cshtml" />
-    <Content Include="Views\Account\ForgotPassword.cshtml" />
-    <Content Include="Views\Account\ForgotPasswordConfirmation.cshtml" />
-    <Content Include="Views\Account\Login.cshtml" />
-    <Content Include="Views\Account\Register.cshtml" />
-    <Content Include="Views\Account\ResetPassword.cshtml" />
-    <Content Include="Views\Account\ResetPasswordConfirmation.cshtml" />
-    <Content Include="Views\Account\SendCode.cshtml" />
-    <Content Include="Views\Account\VerifyCode.cshtml" />
     <Content Include="Views\Manage\AddPhoneNumber.cshtml" />
     <Content Include="Views\Manage\ChangePassword.cshtml" />
     <Content Include="Views\Manage\Index.cshtml" />
@@ -402,16 +513,6 @@
     <Content Include="Views\Osobe\Edit.cshtml" />
     <Content Include="Views\Osobe\Index.cshtml" />
     <Content Include="Views\Korisnici\Index.cshtml" />
-    <Content Include="Views\proizvodi\Create.cshtml" />
-    <Content Include="Views\proizvodi\Delete.cshtml" />
-    <Content Include="Views\proizvodi\Details.cshtml" />
-    <Content Include="Views\proizvodi\Edit.cshtml" />
-    <Content Include="Views\proizvodi\Index.cshtml" />
-    <Content Include="Views\ponude\Create.cshtml" />
-    <Content Include="Views\ponude\Delete.cshtml" />
-    <Content Include="Views\ponude\Details.cshtml" />
-    <Content Include="Views\ponude\Edit.cshtml" />
-    <Content Include="Views\ponude\Index.cshtml" />
     <Content Include="Views\paketi\Create.cshtml" />
     <Content Include="Views\paketi\Delete.cshtml" />
     <Content Include="Views\paketi\Details.cshtml" />
@@ -422,11 +523,6 @@
     <Content Include="Views\tipProizvoda\Details.cshtml" />
     <Content Include="Views\tipProizvoda\Edit.cshtml" />
     <Content Include="Views\tipProizvoda\Index.cshtml" />
-    <Content Include="Views\ponudaProizvoda\Create.cshtml" />
-    <Content Include="Views\ponudaProizvoda\Delete.cshtml" />
-    <Content Include="Views\ponudaProizvoda\Details.cshtml" />
-    <Content Include="Views\ponudaProizvoda\Edit.cshtml" />
-    <Content Include="Views\ponudaProizvoda\Index.cshtml" />
     <Content Include="Views\usluge\Create.cshtml" />
     <Content Include="Views\usluge\Delete.cshtml" />
     <Content Include="Views\usluge\Details.cshtml" />
@@ -443,6 +539,27 @@
     <Content Include="Views\dobavljaci\Edit.cshtml" />
     <Content Include="Views\dobavljaci\Index.cshtml" />
     <Content Include="Views\dobavljaci\EditRating.cshtml" />
+    <Content Include="Views\dobavljaci\UnosiDobavljaca.cshtml" />
+    <Content Include="Views\Proizvodi\Create.cshtml" />
+    <Content Include="Views\Proizvodi\Delete.cshtml" />
+    <Content Include="Views\Proizvodi\Details.cshtml" />
+    <Content Include="Views\Proizvodi\Edit.cshtml" />
+    <Content Include="Views\Proizvodi\Index.cshtml" />
+    <Content Include="Views\usluge\Narudzba.cshtml" />
+    <Content Include="Views\Korisnici\Narudzbe.cshtml" />
+    <Content Include="Views\Account\ConfirmEmail.cshtml" />
+    <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />
+    <Content Include="Views\Account\ExternalLoginFailure.cshtml" />
+    <Content Include="Views\Account\ForgotPassword.cshtml" />
+    <Content Include="Views\Account\ForgotPasswordConfirmation.cshtml" />
+    <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="Views\Account\Register.cshtml" />
+    <Content Include="Views\Account\ResetPassword.cshtml" />
+    <Content Include="Views\Account\ResetPasswordConfirmation.cshtml" />
+    <Content Include="Views\Account\SendCode.cshtml" />
+    <Content Include="Views\Account\VerifyCode.cshtml" />
+    <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
+    <Content Include="Views\Korisnici\Chart.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -456,6 +573,27 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\ApplicationDbContext\201705172206522_InitialDatabaseCreation.resx">
       <DependentUpon>201705172206522_InitialDatabaseCreation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\ApplicationDbContext\201705251408447_dobavljaciRokVazenja.resx">
+      <DependentUpon>201705251408447_dobavljaciRokVazenja.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\ApplicationDbContext\201705281526199_dobavljaciRokVazenja1.resx">
+      <DependentUpon>201705281526199_dobavljaciRokVazenja1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\ApplicationDbContext\201705281534157_dobavljaciRokVazenja2.resx">
+      <DependentUpon>201705281534157_dobavljaciRokVazenja2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\ApplicationDbContext\201705281546136_dobavljaciRokVazenja3.resx">
+      <DependentUpon>201705281546136_dobavljaciRokVazenja3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\ApplicationDbContext\201705301404332_nova.resx">
+      <DependentUpon>201705301404332_nova.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\ApplicationDbContext\201705301410466_nova1.resx">
+      <DependentUpon>201705301410466_nova1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\ApplicationDbContext\201705301411536_nova2.resx">
+      <DependentUpon>201705301411536_nova2.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\TelNetContext\201705172208433_InitialDatabaseCreation.resx">
       <DependentUpon>201705172208433_InitialDatabaseCreation.cs</DependentUpon>
@@ -484,6 +622,72 @@
     <EmbeddedResource Include="Migrations\TelNetContext\201705242021263_BezKATALOGA.resx">
       <DependentUpon>201705242021263_BezKATALOGA.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\TelNetContext\201705251340422_dobavljaciRokVazenja.resx">
+      <DependentUpon>201705251340422_dobavljaciRokVazenja.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\TelNetContext\201705251409082_dobavljaciRokVazenja1.resx">
+      <DependentUpon>201705251409082_dobavljaciRokVazenja1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\TelNetContext\201705281519174_dobavljaciunos.resx">
+      <DependentUpon>201705281519174_dobavljaciunos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\TelNetContext\201705281533368_dobavljaciunos1.resx">
+      <DependentUpon>201705281533368_dobavljaciunos1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\TelNetContext\201705281546358_dobavljaciunos2.resx">
+      <DependentUpon>201705281546358_dobavljaciunos2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\TelNetContext\201705281614477_dobavljaciunos3.resx">
+      <DependentUpon>201705281614477_dobavljaciunos3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\TelNetContext\201705281659242_dobavljaciunos4.resx">
+      <DependentUpon>201705281659242_dobavljaciunos4.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\TelNetContext\201705282209142_dobavljaciProizvodi.resx">
+      <DependentUpon>201705282209142_dobavljaciProizvodi.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\TelNetContext\201705282222173_svastaNesto.resx">
+      <DependentUpon>201705282222173_svastaNesto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\TelNetContext\201705282227370_svastaNesto1.resx">
+      <DependentUpon>201705282227370_svastaNesto1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\TelNetContext\201705282230136_proizvodi.resx">
+      <DependentUpon>201705282230136_proizvodi.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\TelNetContext\201705291715184_proizvodi1.resx">
+      <DependentUpon>201705291715184_proizvodi1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\TelNetContext\201705300949333_narucenausluga.resx">
+      <DependentUpon>201705300949333_narucenausluga.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\TelNetContext\201705300952389_narucenausluga1.resx">
+      <DependentUpon>201705300952389_narucenausluga1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\TelNetContext\201705301017147_narudzbausluga.resx">
+      <DependentUpon>201705301017147_narudzbausluga.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\TelNetContext\201705301034492_narudzbausluga1.resx">
+      <DependentUpon>201705301034492_narudzbausluga1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\TelNetContext\201705301138215_narudzbausluga2.resx">
+      <DependentUpon>201705301138215_narudzbausluga2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\TelNetContext\201705301147180_narudzbausluga3.resx">
+      <DependentUpon>201705301147180_narudzbausluga3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\TelNetContext\201705301157197_narudzbausluga4.resx">
+      <DependentUpon>201705301157197_narudzbausluga4.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\TelNetContext\201705301201507_narudzbausluga5.resx">
+      <DependentUpon>201705301201507_narudzbausluga5.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\TelNetContext\201705301405061_nova.resx">
+      <DependentUpon>201705301405061_nova.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\TelNetContext\201705301412238_nova1.resx">
+      <DependentUpon>201705301412238_nova1.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
@@ -504,6 +708,8 @@
           <DevelopmentServerPort>58499</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>http://localhost:58499/</IISUrl>
+          <OverrideIISAppRootUrl>True</OverrideIISAppRootUrl>
+          <IISAppRootUrl>http://localhost:58499/</IISAppRootUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>
