@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using TelNet.Models;
 
 namespace telNet.Models
 {
@@ -10,7 +11,7 @@ namespace telNet.Models
         public paket()
         {
             this.Usluge = new HashSet<usluga>();
-            this.narudzbeUsluga = new HashSet<narudzbaUsluga>();
+            this.narudzbePaketa = new HashSet<NarudzbaPaket>();
         }
 
         public int paketID { get; set; }
@@ -21,6 +22,6 @@ namespace telNet.Models
       
      
         public virtual ICollection<usluga> Usluge { get; set; }
-        public ICollection<narudzbaUsluga> narudzbeUsluga { get; set; }
+        public ICollection<NarudzbaPaket> narudzbePaketa { get; set; }
     }
 }

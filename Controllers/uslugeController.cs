@@ -60,8 +60,10 @@ namespace TelNet.Controllers
             }
             usluga usluga = db.Usluge.Find(id);
             UslugaNarudzba un = new UslugaNarudzba();
-            un.komentar = "blabla";
+            un.komentar = "Bez komentara";
             un.datum = DateTime.Now;
+            un.imePrezimeKupca = "";
+            un.adresaKupca = "";
             un.usluga = usluga;
             if (usluga == null)
             {
@@ -80,6 +82,8 @@ namespace TelNet.Controllers
                 var user = User.Identity.Name;
                 narudzba.odgovornaOsobaID = user;
                 narudzba.komentar = usluganarudzba.komentar;
+                narudzba.adresaKupca = usluganarudzba.adresaKupca;
+                narudzba.imePrezimeKupca = usluganarudzba.imePrezimeKupca;
                 narudzba.usluga = usluganarudzba.usluga;
                 narudzba.datumNarudzbe = usluganarudzba.datum;
                 db.Entry(usluganarudzba.usluga).State = EntityState.Modified;

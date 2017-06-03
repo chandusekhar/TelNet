@@ -1,0 +1,80 @@
+﻿@model IEnumerable<telNet.Models.usluga>
+
+@{
+    ViewBag.Title = "Narudzbe";
+}
+
+
+
+
+<div class="services">
+    <div class="container">
+        <div class="text-center">
+            <table class="table">
+
+                <h2>Narudžbe</h2>
+                <tr>
+                    <th>
+                        @Html.ActionLink(
+            linkText: "Naziv usluge",
+            actionName: "Narudzbe",
+            controllerName: "Korisnici",
+            routeValues: new { sort = ViewBag.SortByName },
+            htmlAttributes: null)
+
+                    </th>
+                    <th>
+                        @Html.ActionLink(
+            linkText: "Tip usluge",
+            actionName: "Narudzbe",
+            controllerName: "Korisnici",
+            routeValues: new { sort = ViewBag.SortByTip },
+            htmlAttributes: null)
+                    </th>
+                    <th>
+                        Cijena usluge
+                    </th>
+                    <th>
+                        Opis usluge
+                    </th>
+                    <th>
+                        @Html.ActionLink(
+            linkText: "Broj narudžbi",
+            actionName: "Narudzbe",
+            controllerName: "Korisnici",
+            routeValues: new { sort = ViewBag.SortByNarudzbe },
+            htmlAttributes: null)
+                </th>
+
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.nazivUsluge)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.tipUsluge)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.cijenaUsluge)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.opis)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.narudzbeUsluga.Count)
+                    </td>
+
+                </tr>
+            }
+
+        </table>
+
+
+       
+    </div>
+
+</div>
+</div>

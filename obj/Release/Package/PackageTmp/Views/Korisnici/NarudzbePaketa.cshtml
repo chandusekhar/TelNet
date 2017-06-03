@@ -1,0 +1,77 @@
+﻿@model IEnumerable<telNet.Models.paket>
+
+@{
+    ViewBag.Title = "Narudzbe Paketa";
+}
+
+
+
+
+<div class="services">
+    <div class="container">
+        <div class="text-center">
+            <table class="table">
+
+                <h2>Narudžbe paketa</h2>
+                <tr>
+                    <th>
+                        @Html.ActionLink(
+            linkText: "Naziv paketa",
+            actionName: "NarudzbePaketa",
+            controllerName: "Korisnici",
+            routeValues: new { sort = ViewBag.SortByName },
+            htmlAttributes: null)
+
+                    </th>
+                   
+                    <th>
+                        Cijena paketa
+                    </th>
+                    <th>
+                        Opis paketa
+                    </th>
+                    <th>
+                        @Html.ActionLink(
+            linkText: "Broj narudžbi",
+            actionName: "NarudzbePaketa",
+            controllerName: "Korisnici",
+            routeValues: new { sort = ViewBag.SortByNarudzbe },
+            htmlAttributes: null)
+                </th>
+
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.nazivPaketa)
+                    </td>
+                  
+                    <td>
+                        @Html.DisplayFor(modelItem => item.cijenaPaketa)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.opis)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.narudzbePaketa.Count)
+                    </td>
+
+                </tr>
+            }
+
+        </table>
+
+
+        <h3>
+            <li>
+                <a href="http://api.html2pdfrocket.com/pdf?value=http://telnet20170525114130.azurewebsites.net/Korisnici/NarudzbePaketaPDF&apikey=597b19a0-995f-4e7f-a823-d2ed6ce2e496">Preuzmi PDF</a>
+
+
+            </li>
+        </h3>
+    </div>
+
+</div>
+</div>

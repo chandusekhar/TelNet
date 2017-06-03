@@ -15,6 +15,8 @@ namespace TelNet.DAL
         }
         public DbSet<dobavljac> Dobavljaci { get; set; }
         public DbSet<narudzbaUsluga> NarudzbeUsluga { get; set; }
+        public DbSet<NarudzbaPaket> NarudzbePaketa { get; set; }
+
         public DbSet<Osoba> Osobe { get; set; }
         public DbSet<paket> Paketi { get; set; }
         public DbSet<Proizvod> Proizvodi { get; set; }
@@ -28,7 +30,9 @@ namespace TelNet.DAL
         {
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
          
-            modelBuilder.Entity<narudzbaUsluga>().HasRequired(m => m.usluga).WithMany(m => m.narudzbeUsluga).HasForeignKey(m => m.uslugaID);
+            modelBuilder.Entity<narudzbaUsluga>().HasOptional(m => m.usluga).WithMany(m => m.narudzbeUsluga).HasForeignKey(m => m.uslugaID);
+            modelBuilder.Entity<NarudzbaPaket>().HasOptional(m => m.paket).WithMany(m => m.narudzbePaketa).HasForeignKey(m => m.paketID);
+
             modelBuilder.Entity<paket>()
                 .HasMany(c => c.Usluge).WithMany(i => i.Paketi)
                 .Map(t => t.MapLeftKey("paketID")

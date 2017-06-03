@@ -4,58 +4,61 @@
     ViewBag.Title = "Brisanje usluge";
 }
 
-<div class="container">
-    <h2>Delete</h2>
+<div class="services">
+    <div class="container">
+        <div class="text-center">
+                <h2>Brisanje</h2>
 
-    <h3>Jeste li sigurni da želite izbrisati uslugu?</h3>
-    <div>
-        <h4>usluga</h4>
-        <hr />
-        <dl class="dl-horizontal">
-           
+                <h3>Jeste li sigurni da želite izbrisati uslugu?</h3>
+                <div>
+                     <hr />
+                    <dl class="dl-horizontal">
 
-            <dt>
-                @Html.DisplayNameFor(model => model.nazivUsluge)
-            </dt>
 
-            <dd>
-                @Html.DisplayFor(model => model.nazivUsluge)
-            </dd>
+                        <dt>
+                            @Html.DisplayName("Naziv usluge")
+                        </dt>
 
-            <dt>
-                @Html.DisplayNameFor(model => model.tipUsluge)
-            </dt>
+                        <dd>
+                            @Html.DisplayFor(model => model.nazivUsluge)
+                        </dd>
 
-            <dd>
-                @Html.DisplayFor(model => model.tipUsluge)
-            </dd>
+                        <dt>
+                            @Html.DisplayName("Tip usluge")
+                        </dt>
 
-            <dt>
-                @Html.DisplayNameFor(model => model.cijenaUsluge)
-            </dt>
+                        <dd>
+                            @Html.DisplayFor(model => model.tipUsluge)
+                        </dd>
 
-            <dd>
-                @Html.DisplayFor(model => model.cijenaUsluge)
-            </dd>
+                        <dt>
+                            @Html.DisplayName("Cijena usluge")
+                        </dt>
 
-            <dt>
-                @Html.DisplayNameFor(model => model.opis)
-            </dt>
+                        <dd>
+                            @Html.DisplayFor(model => model.cijenaUsluge)
+                        </dd>
 
-            <dd>
-                @Html.DisplayFor(model => model.opis)
-            </dd>
+                        <dt>
+                            @Html.DisplayName("Opis")
+                        </dt>
 
-        </dl>
+                        <dd>
+                            @Html.DisplayFor(model => model.opis)
+                        </dd>
 
-        @using (Html.BeginForm())
-        {
-            @Html.AntiForgeryToken()
+                    </dl>
 
-            <div class="form-actions no-color">
-                <input type="submit" value="Izbriši" class="btn btn-default" /> |
-                @Html.ActionLink("Vrati se nazad", "Index")
+                    @using (Html.BeginForm())
+                    {
+                        @Html.AntiForgeryToken()
+
+                        <div class="form-actions no-color">
+                            <input type="submit" value="Izbriši" class="btn btn-default" /> |
+                            @Html.ActionLink("Vrati se nazad", "Index")
+                        </div>
+                    }
+                </div>
             </div>
-        }
-    </div>
-    </div>
+        </div>
+</div>

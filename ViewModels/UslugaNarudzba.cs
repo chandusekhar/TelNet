@@ -10,6 +10,8 @@ namespace TelNet.ViewModels
     {
         public usluga usluga { get; set; } 
         public string komentar { get; set; }
-        public DateTime datum { get; set; }
+        public DateTime datum { get; set;}
+        public string imePrezimeKupca { get; set; }
+        public string adresaKupca { get; set; }
     }
 }

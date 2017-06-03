@@ -22,7 +22,11 @@ namespace TelNet
 
             var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(context));
             var UserManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(context));
+            var user2 = UserManager.FindByEmail("menadzer@telnet.ba");
+            var result12 = UserManager.AddToRole(user2.Id, "Manager");
 
+            user2 = UserManager.FindByEmail("zaposlenik@telnet.ba");
+            result12 = UserManager.AddToRole(user2.Id, "Employee");
 
             // In Startup iam creating first Admin Role and creating a default Admin User     
             if (!roleManager.RoleExists("Admin"))

@@ -10,9 +10,17 @@
 
               
 
-                    <h2>Panel za administratore</h2>
                     @if (ViewBag.Manager == "Yes" || ViewBag.displayMenu == "Yes")
                     {
+                        if (ViewBag.Manager == "Yes")
+                        {
+                            <h2>Panel za Menadzera</h2>
+
+                        }
+                        else
+                        {
+                            <h2>Panel za Administratora</h2>
+                        }
                     <h3>
                         <li>@Html.ActionLink("Upravljanje dobavljačima", "Index", "dobavljaci")</li>
                     </h3>
@@ -25,7 +33,12 @@
 
                     }
                    @if (ViewBag.Employee == "Yes" || ViewBag.displayMenu == "Yes")
+                   {
+                    if (ViewBag.Employee == "Yes")
                     {
+                        <h2>Panel za Zaposlenika</h2>
+
+                    }
                     <h3>
                         <li>@Html.ActionLink("Upravljanje uslugama", "Index", "usluge")</li>
                     </h3>
@@ -35,8 +48,12 @@
                     <h3>
                         <li>@Html.ActionLink("Narudžbe usluga", "Narudzbe", "Korisnici")</li>
                     </h3>
-                    }
-               
-            </div>
+                    <h3>
+                        <li>@Html.ActionLink("Narudžbe paketa", "NarudzbePaketa", "Korisnici")</li>
+
+                        </h3>
+                      }
+
+</div>
             </div>
         </div>

@@ -44,6 +44,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="evohtmltopdf, Version=7.2.0.0, Culture=neutral, PublicKeyToken=e1fcbb86597de299, processorArchitecture=MSIL">
+      <HintPath>..\packages\evopdf.7.2\lib\net40\evohtmltopdf.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.AI.Agent.Intercept, Version=2.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.ApplicationInsights.Agent.Intercept.2.0.6\lib\net45\Microsoft.AI.Agent.Intercept.dll</HintPath>
       <Private>True</Private>
@@ -77,6 +81,10 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="NReco.PdfGenerator, Version=1.1.15.0, Culture=neutral, PublicKeyToken=231663d50a41b451, processorArchitecture=MSIL">
+      <HintPath>..\packages\NReco.PdfGenerator.1.1.15\lib\net20\NReco.PdfGenerator.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -253,6 +261,10 @@
     <Compile Include="Migrations\ApplicationDbContext\201705301411536_nova2.Designer.cs">
       <DependentUpon>201705301411536_nova2.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\ApplicationDbContext\201706022214451_NarudzbaPaket.cs" />
+    <Compile Include="Migrations\ApplicationDbContext\201706022214451_NarudzbaPaket.Designer.cs">
+      <DependentUpon>201706022214451_NarudzbaPaket.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\ApplicationDbContext\Configuration.cs" />
     <Compile Include="Migrations\TelNetContext\201705172208433_InitialDatabaseCreation.cs" />
     <Compile Include="Migrations\TelNetContext\201705172208433_InitialDatabaseCreation.Designer.cs">
@@ -378,12 +390,49 @@
     <Compile Include="Migrations\TelNetContext\201705301412238_nova1.Designer.cs">
       <DependentUpon>201705301412238_nova1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\TelNetContext\201706021755267_NarudzbaKupac.cs" />
+    <Compile Include="Migrations\TelNetContext\201706021755267_NarudzbaKupac.Designer.cs">
+      <DependentUpon>201706021755267_NarudzbaKupac.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\TelNetContext\201706021941386_NarudzbaPaket.cs" />
+    <Compile Include="Migrations\TelNetContext\201706021941386_NarudzbaPaket.Designer.cs">
+      <DependentUpon>201706021941386_NarudzbaPaket.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\TelNetContext\201706022004328_NarudzbaPaket1.cs" />
+    <Compile Include="Migrations\TelNetContext\201706022004328_NarudzbaPaket1.Designer.cs">
+      <DependentUpon>201706022004328_NarudzbaPaket1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\TelNetContext\201706022005579_NarudzbaPaket2.cs" />
+    <Compile Include="Migrations\TelNetContext\201706022005579_NarudzbaPaket2.Designer.cs">
+      <DependentUpon>201706022005579_NarudzbaPaket2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\TelNetContext\201706022007079_NarudzbaPaket3.cs" />
+    <Compile Include="Migrations\TelNetContext\201706022007079_NarudzbaPaket3.Designer.cs">
+      <DependentUpon>201706022007079_NarudzbaPaket3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\TelNetContext\201706022009564_NarudzbaPaket4.cs" />
+    <Compile Include="Migrations\TelNetContext\201706022009564_NarudzbaPaket4.Designer.cs">
+      <DependentUpon>201706022009564_NarudzbaPaket4.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\TelNetContext\201706022015372_NarudzbaPaket5.cs" />
+    <Compile Include="Migrations\TelNetContext\201706022015372_NarudzbaPaket5.Designer.cs">
+      <DependentUpon>201706022015372_NarudzbaPaket5.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\TelNetContext\201706022021509_NarudzbaPaket6.cs" />
+    <Compile Include="Migrations\TelNetContext\201706022021509_NarudzbaPaket6.Designer.cs">
+      <DependentUpon>201706022021509_NarudzbaPaket6.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\TelNetContext\201706022215142_NarudzbaPaket7.cs" />
+    <Compile Include="Migrations\TelNetContext\201706022215142_NarudzbaPaket7.Designer.cs">
+      <DependentUpon>201706022215142_NarudzbaPaket7.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\TelNetContext\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\dobavljac.cs" />
     <Compile Include="Models\DobavljacUnos.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\NarudzbaPaket.cs" />
     <Compile Include="Models\NarudzbaUsluga.cs" />
     <Compile Include="Models\Osoba.cs" />
     <Compile Include="Models\paket.cs" />
@@ -393,11 +442,13 @@
     <Compile Include="Models\tipProizvoda.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Models\usluga.cs" />
+    <Compile Include="PdfConvert.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModels\DobavljacKomentar.cs" />
     <Compile Include="ViewModels\IzabraneUsluge.cs" />
     <Compile Include="ViewModels\MailData.cs" />
+    <Compile Include="ViewModels\PaketNarudzba.cs" />
     <Compile Include="ViewModels\PaketViewModel.cs" />
     <Compile Include="ViewModels\UslugaNarudzba.cs" />
   </ItemGroup>
@@ -560,6 +611,10 @@
     <Content Include="Views\Account\VerifyCode.cshtml" />
     <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
     <Content Include="Views\Korisnici\Chart.cshtml" />
+    <Content Include="Views\paketi\Narudzba.cshtml" />
+    <Content Include="Views\Korisnici\NarudzbePaketa.cshtml" />
+    <Content Include="Views\Korisnici\NarudzbePDF.cshtml" />
+    <Content Include="Views\Korisnici\NarudzbePaketaPDF.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -594,6 +649,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\ApplicationDbContext\201705301411536_nova2.resx">
       <DependentUpon>201705301411536_nova2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\ApplicationDbContext\201706022214451_NarudzbaPaket.resx">
+      <DependentUpon>201706022214451_NarudzbaPaket.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\TelNetContext\201705172208433_InitialDatabaseCreation.resx">
       <DependentUpon>201705172208433_InitialDatabaseCreation.cs</DependentUpon>
@@ -687,6 +745,33 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\TelNetContext\201705301412238_nova1.resx">
       <DependentUpon>201705301412238_nova1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\TelNetContext\201706021755267_NarudzbaKupac.resx">
+      <DependentUpon>201706021755267_NarudzbaKupac.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\TelNetContext\201706021941386_NarudzbaPaket.resx">
+      <DependentUpon>201706021941386_NarudzbaPaket.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\TelNetContext\201706022004328_NarudzbaPaket1.resx">
+      <DependentUpon>201706022004328_NarudzbaPaket1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\TelNetContext\201706022005579_NarudzbaPaket2.resx">
+      <DependentUpon>201706022005579_NarudzbaPaket2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\TelNetContext\201706022007079_NarudzbaPaket3.resx">
+      <DependentUpon>201706022007079_NarudzbaPaket3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\TelNetContext\201706022009564_NarudzbaPaket4.resx">
+      <DependentUpon>201706022009564_NarudzbaPaket4.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\TelNetContext\201706022015372_NarudzbaPaket5.resx">
+      <DependentUpon>201706022015372_NarudzbaPaket5.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\TelNetContext\201706022021509_NarudzbaPaket6.resx">
+      <DependentUpon>201706022021509_NarudzbaPaket6.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\TelNetContext\201706022215142_NarudzbaPaket7.resx">
+      <DependentUpon>201706022215142_NarudzbaPaket7.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -10,6 +10,7 @@ using TelNet.DAL;
 using telNet.Models;
 using TelNet.ViewModels;
 using System.Data.Entity.Infrastructure;
+using TelNet.Models;
 
 namespace TelNet.Controllers
 {
@@ -234,6 +235,70 @@ namespace TelNet.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
+        }
+        public ActionResult Narudzba(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            paket paket = db.Paketi.Find(id);
+            PaketNarudzba un = new PaketNarudzba();
+            un.komentar = "Bez komentara";
+            un.datum = DateTime.Now;
+            un.imePrezimeKupca = "";
+            un.adresaKupca = "";
+            un.paket= paket;
+            if (paket == null)
+            {
+                return HttpNotFound();
+            }
+            return View(un);
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin, Employee")]
+        public ActionResult Narudzba(PaketNarudzba usluganarudzba)
+        {
+            if (ModelState.IsValid)
+            {
+                NarudzbaPaket narudzba = new NarudzbaPaket();
+                var user = User.Identity.Name;
+                narudzba.odgovornaOsobaID = user;
+                narudzba.komentar = usluganarudzba.komentar;
+                narudzba.adresaKupca = usluganarudzba.adresaKupca;
+                narudzba.imePrezimeKupca = usluganarudzba.imePrezimeKupca;
+                
+                narudzba.paket = usluganarudzba.paket;
+                narudzba.datumNarudzbe = usluganarudzba.datum;
+                db.Entry(usluganarudzba.paket).State = EntityState.Modified;
+
+                var dobo = db.Paketi.Include(i => i.narudzbePaketa).Where(i => i.paketID == usluganarudzba.paket.paketID).Single();
+
+
+                if (TryUpdateModel(dobo, "",
+                   new string[] { "nazivPaketa", "cijenaPaketa", "opis" }))
+                {
+                    try
+                    {
+                        dobo.narudzbePaketa.Add(narudzba);
+                        db.Entry(dobo).State = EntityState.Modified;
+                        db.NarudzbePaketa.Add(narudzba);
+                        db.SaveChanges();
+
+
+                    }
+                    catch (RetryLimitExceededException /* dex */)
+                    {
+                        //Log the error (uncomment dex variable name and add a line here to write a log.
+                        ModelState.AddModelError("", "Unable to save changes. Try again, and if the problem persists, see your system administrator.");
+                    }
+                }
+
+                return RedirectToAction("Index");
+            }
+
+            return View();
         }
     }
 }

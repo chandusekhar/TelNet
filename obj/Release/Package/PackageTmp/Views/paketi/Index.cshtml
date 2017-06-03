@@ -62,7 +62,10 @@
 {
                         @Html.ActionLink("Izmjena", "Edit", new { id = item.paketID })    <br>
                         @Html.ActionLink("Brisanje", "Delete", new { id = item.paketID })
-                    }
+    <br>
+    @Html.ActionLink("Naruči", "Narudzba", new { id = item.paketID })
+
+}
 
 </div>
                         }

@@ -12,9 +12,14 @@ namespace telNet.Models
         public int narudzbaUslugaID { get; set; }
         public DateTime datumNarudzbe { get; set; }
         public string komentar { get; set; }
+        public string imePrezimeKupca { get; set; }
+        public string adresaKupca { get; set; }
         public string odgovornaOsobaID { get; set; }
-        public int uslugaID { get; set; }
+       
+        public int? uslugaID { get; set; }
         public virtual usluga usluga { get; set; }
+
+       
        
     }
 }
